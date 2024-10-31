@@ -1,7 +1,5 @@
 extends CameraControllerBase
 
-
-
 func _ready() -> void:
 	# setting initial states for this camera.
 	current = true
