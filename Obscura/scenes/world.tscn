@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://88du8yjefx8j"]
+[gd_scene load_steps=18 format=4 uid="uid://88du8yjefx8j"]
 
 [ext_resource type="PackedScene" uid="uid://dtm13sp1jsrwi" path="res://scenes/vessel.tscn" id="1_oaql3"]
 [ext_resource type="Script" path="res://scripts/camera_selector.gd" id="2_qffo5"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://b37gggqpn3ecd" path="res://stage_1_camera.tscn" id="7_ofvkk"]
 [ext_resource type="Script" path="res://stage_1_camera.gd" id="8_g3w1g"]
 [ext_resource type="PackedScene" uid="uid://cxbqage8hvteu" path="res://stage_2_camera.tscn" id="9_wsxhl"]
+[ext_resource type="PackedScene" uid="uid://di0i1c58qdv56" path="res://stage_3_camera.tscn" id="10_uly57"]
+[ext_resource type="Script" path="res://stage_3_camera.gd" id="11_0m8wf"]
+[ext_resource type="PackedScene" uid="uid://c7axot85ltqah" path="res://stage_4_camera.tscn" id="12_7r57p"]
+[ext_resource type="PackedScene" uid="uid://crrd3fvid41fn" path="res://stage_5_camera.tscn" id="13_ncsgl"]
+[ext_resource type="Script" path="res://stage_5_camera.gd" id="14_3fis1"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n415u"]
 _surfaces = [{
@@ -44,7 +49,7 @@ terrain_manager = NodePath("../TerrainManager")
 
 [node name="CameraSelector" type="Node" parent="." node_paths=PackedStringArray("cameras")]
 script = ExtResource("2_qffo5")
-cameras = [NodePath("../PushBoxCamera"), NodePath("../PushBoxCamera2"), NodePath("../PushBoxCamera3"), NodePath("../Stage1Camera"), NodePath("../Stage2Camera")]
+cameras = [NodePath("../PushBoxCamera"), NodePath("../PushBoxCamera2"), NodePath("../PushBoxCamera3"), NodePath("../Stage1Camera"), NodePath("../Stage2Camera"), NodePath("../Stage3Camera"), NodePath("../Stage4Camera"), NodePath("../Stage5Camera")]
 
 [node name="PushBoxCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_ttnp6")]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 30, 0)
@@ -99,4 +104,17 @@ script = ExtResource("8_g3w1g")
 target = NodePath("../Vessel")
 
 [node name="Stage2Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("9_wsxhl")]
+target = NodePath("../Vessel")
+
+[node name="Stage3Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_uly57")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+script = ExtResource("11_0m8wf")
+target = NodePath("../Vessel")
+
+[node name="Stage4Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("12_7r57p")]
+target = NodePath("../Vessel")
+
+[node name="Stage5Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("13_ncsgl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+script = ExtResource("14_3fis1")
 target = NodePath("../Vessel")
