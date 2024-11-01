@@ -1,4 +1,5 @@
 extends CameraControllerBase
+
 # exports
 @export var follow_speed: float = 200.0 
 @export var catchup_speed: float = 30 
