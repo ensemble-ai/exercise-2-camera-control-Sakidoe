@@ -1,0 +1,74 @@
+# Code Review for Programming Exercise 2 #
+## Peer-reviewer Information
+* *name:* Carlos Huang
+* *email:* zcahuang@ucdavis.edu
+### Description ###
+To assess the solution, you will be choosing ONE choice from unsatisfactory, satisfactory, good, great, or perfect. Place an x character inside of the square braces next to the appropriate label.
+The following are the criteria by which you should assess your peer's solution of the exercise's stages.
+#### Perfect #### 
+    Cannot find any flaws concerning the prompt. Perfectly satisfied all stage objectives.
+#### Great ####
+    Minor flaws in one or two objectives. 
+#### Good #####
+    A major flaw and some minor flaws.
+#### Satisfactory ####
+    A couple of major flaws. Heading towards a solution, however, did not fully realize the solution.
+#### Unsatisfactory ####
+    Partial work, but not really converging to a solution. Pervasive major flaws. Objective largely unmet.
+### Stage 1 ###
+- [x] Perfect
+- [ ] Great
+- [ ] Good
+- [ ] Satisfactory
+- [ ] Unsatisfactory
+#### Justification ##### 
+  Your implementation of stage one works flawlessly. The camera is centered on the vessel.
+### Stage 2 ###
+- [ ] Perfect
+- [ ] Great
+- [x] Good
+- [ ] Satisfactory
+- [ ] Unsatisfactory
+#### Justification ##### 
+  I saw a couple of minor issues with your implementation of stage 2. When the camera is switch from stage one to stage two, we see that the vessel is on the edge of the camera boundaries. This is a minor issue, but it can be fixed if you add these lines of code " if !current: position = target.position return" anywhere inside your physics process function. Another issue that I encounter was that your vessel natually lags behind, this might be a bug in your code. A way to fix this is by copying what have [in line 30](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/scenes/stage_2_camera.gd#L30). Instead of position, you would want to do target.position. Another thing is that your vessel goes out of the camera's boundary. If it is something you want to fix, just use pushBox code as [reference](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/scripts/camera_controllers/push_box.gd#L26-L40). The logic remove half the diamenter from the vessel.
+### Stage 3 ###
+- [x] Perfect
+- [ ] Great
+- [ ] Good
+- [ ] Satisfactory
+- [ ] Unsatisfactory
+#### justification ##### 
+    Your implementation works as intended. The camera follows the vessel at ratio of the vessel velocity.
+### Stage 4 ###
+- [ ] Perfect
+- [x] Great
+- [ ] Good
+- [ ] Satisfactory
+- [ ] Unsatisfactory
+#### justification ##### 
+    The implementation of your camera is almost perfect at stage 5. The only issue is that your camera should only get ahead your vessel, but also have a catch delay timer. This timer should go [in this line potentially](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/scenes/stage_4_camera.gd#L49).
+### Stage 5 ###
+- [ ] Perfect
+- [ ] Great
+- [ ] Good
+- [ ] Satisfactory
+- [x] Unsatisfactory
+#### justification ##### 
+    At the moment, I am running your code. I do not see the vessel in the camera view for stage 5. I noticed that their x.coordinates is always 40 maginitudes apart. This probably explain why the vessel is not within the camera frames. One piece of advice I would suggest you could do if you are willing to revisit stage five is to use the pushbox code as reference for stage 5. Try to find the bondaries of your inner and outter box.
+## Code Style ##
+### Code Style Review ###
+#### Style Guide Infractions ####
+    Commenting: I noticed that your comments are not capitalized. Some of them your comments do end with a period, but some of them do not. For example, [here](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/stage_1_camera.gd#L10-L14).
+    Spacing between your functions and variable. Make sure that you add a gap between your functions. Godot recommends a 2 space gap. I notice the infractions on these [lines](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/stage_3_camera.gd#L10-L21).
+    Specify the type of your variable: For these variable, you might want to make it clear that the variable defined [here](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/stage_5_camera.gd#L18-L21) are of the type float.
+    These are the guide infractions that I was able to spot. I could have missed a couple, but other than these. I believe your code follows the godot guidelines for the most part.
+    
+#### Style Guide Exemplars ####
+    Spacing: I like how you added a blank space between your "or" [operator](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/scenes/stage_2_camera.gd#L24).
+## Best Practices ##
+#### Best Practices Exemplars ####
+    You code is well commented for the most part. Although some of your implementation was confusing to understand, I was able to figure it out based on the comments you left.
+#### Best Practices Infractions ####
+    1. A good practice would be to keep your script files inside your script folders. I was having a rough time looking for your stage 2 and 4 script because they were inside your scenes folders.
+    2. You naming scheme for stage five was very difficult to [follow](https://github.com/ensemble-ai/exercise-2-camera-control-Sakidoe/blob/1c0e3dcf88bc09b04b14a0eff2c14a0a4e5dff80/Obscura/stage_5_camera.gd#L18-L21). You might consider renaming it to left_offset, right_offset, and so on.
+    Other than the issue decribes above and the misimplementation that I describes, I think this is a solid attempt of this exercise.
